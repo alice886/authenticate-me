@@ -3,13 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Route, useParams } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import Coverflow from 'react-coverflow';
-import { getAllSongs } from '../../store/song'
+import songReducer, { getAllSongs } from '../../store/song'
 // import bg from '../../images/red-vinyl.gif'
 import bg from '../../images/drum.gif'
 // import bg from '../../images/vinyl-gif.gif'
 // import bg from '../../images/sunrise.jpeg'
 import { getUserDetail } from '../../store/user'
 import LoginForm from '../LoginFormModal/LoginForm'
+
+import { createRoot } from 'react-dom/client';
+import { Carousel, CarouselItem } from 'react-round-carousel';
+import 'react-round-carousel/src/index.css';
+
 
 const TestUserHome = ({ playing, setPlaying, setSongName, setArtistName }) => {
     const dispatch = useDispatch();
@@ -18,6 +23,31 @@ const TestUserHome = ({ playing, setPlaying, setSongName, setArtistName }) => {
     const [songSelect, setSongSelect] = useState();
     const sessionUser = useSelector(state => state.session.user);
     const allsongs = useSelector(state => Object.values(state.song))
+
+    // Create an array of Carousel Items
+    // const items: CarouselItem[] = Array(20)
+    //     .fill('')
+    //     .map((_: string, index: number) => ({
+    //         alt: 'A random photo',
+    //         image: `https://picsum.photos/${210 + index}`,
+    //         content: (
+    //             <div>
+    //                 <strong>Round Carousel</strong>
+    //                 <span>Slide number {index + 1}</span>
+    //             </div>
+    //         )
+    //     }));
+    const items: CarouselItem[] = allsongs?.map(song => ({
+        alt: `${song.title}`,
+        image: `${song.previewImage}`,
+        content: (
+            <div>
+                <span>{song.title}</span>
+                    <button  className="home-songplay-button" value={song.url} onClick={e => handleHomePlay(e, song)} >{(songSelect === song?.id) ? '||' : '▶'}</button>
+            </div>
+        )
+    }));
+
 
     useEffect(() => {
         dispatch(getAllSongs()).then(() => setHomesongloaded(true))
@@ -43,6 +73,8 @@ const TestUserHome = ({ playing, setPlaying, setSongName, setArtistName }) => {
         }
     }
 
+
+
     // const ppbutton = played ?'❚ ❚':'▶'
 
     return homesongloaded && (
@@ -60,7 +92,10 @@ const TestUserHome = ({ playing, setPlaying, setSongName, setArtistName }) => {
                 </div>
 
             )}
-            <div className="all-home-song-container">
+            <div className='carousel_container'>
+            <Carousel items={items}/>
+            </div>
+            {/* <div className="all-home-song-container">
                 {allsongs && allsongs.map((song) => {
                     return <div className="eachhomesong" key={song.id}>
                         <img src={song.previewImage} ></img>
@@ -72,7 +107,7 @@ const TestUserHome = ({ playing, setPlaying, setSongName, setArtistName }) => {
                     </div>
                 })}
 
-            </div>
+            </div> */}
 
         </div>
 

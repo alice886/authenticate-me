@@ -254,7 +254,7 @@
 
 #playlistSidenav {
     height: 100%;
-    width: 50px;
+    width: 30px;
     position: fixed;
     z-index: 100000;
     top: 0;

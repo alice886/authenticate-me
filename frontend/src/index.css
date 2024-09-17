@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Bitter:wght@100;200;400&family=Grape+Nuts&family=Macondo&family=Manrope:wght@200&family=Square+Peg&family=Syncopate&display=swap');
+@import 'react-round-carousel/src/index.css';
 
 html {
     background-color: #D5D8DC;
@@ -24,6 +25,54 @@ body {
 
 }
 
+
+#home-middle > div.carousel_container > div.carousel > div > div{
+    transform: translateZ(-528px) rotateY(330deg);
+    
+}
+.carousel__container{
+    height: 20em;
+    padding-top: 2em;
+    background-color: aquamarine;
+    transform: translateZ(-528px) rotateY(350deg);
+    /* transform: unset; */
+
+}
+
+
+
+div.carousel_container > div.carousel__slide> div.carousel__slide-overlay{
+    transform: rotateY(330deg) translateZ(528px);
+}
+
+.carousel__slide-overlay {
+    color: #fff;
+    text-align: center;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s ease-in-out;
+    transition: opacity 0.35s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
 body {
     min-height: 100%;
     justify-content: center;
@@ -38,6 +87,9 @@ body {
     box-sizing: border-box;
 
 }
+
+
+
 
 div {
     /* top: 30px; */
@@ -78,7 +130,6 @@ div.public-present {
 
 div.public-home {
     /* padding: 2%; */
-    height: 450px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -88,7 +139,7 @@ div.public-home {
 
 #home-middle>div.public-home>div:nth-child(1) {
     position: absolute;
-    top: 1.5em;
+    top: 3.5em;
     color: white;
     font-size: 3.8em;
     font-weight: 700;
@@ -99,7 +150,7 @@ div.public-home {
 
 #home-middle>div.public-home>div:nth-child(2) {
     position: absolute;
-    top: 7.8em;
+    top: 13.8em;
     color: white;
     font-size: 1.5em;
     font-weight: 100;
@@ -166,9 +217,9 @@ div.eachhomesong {
 }
 
 .home-songplay-button {
-    position: absolute;
-    height: 90%;
-    width: 100%;
+    /* position: absolute; */
+    /* height: 90%;
+    width: 100%; */
     background-color: transparent;
     color: transparent;
     font-size: 60px;
@@ -177,7 +228,7 @@ div.eachhomesong {
 
 .home-songplay-button:hover {
     color: rgba(249, 105, 14);
-    background-color: rgba(255, 255, 255, 0.3);
+    /* background-color: rgba(255, 255, 255, 0.3); */
 }
 
 .home-song-title {
@@ -189,12 +240,14 @@ div.eachhomesong {
     overflow: hidden;
     white-space: nowrap;
 }
-.home-song-title >a{
+
+.home-song-title>a {
     font-size: 1em;
     color: rgb(156, 101, 0);
     text-decoration: none;
 }
-.home-song-title >a:hover{
+
+.home-song-title>a:hover {
     color: orange;
 }
 
@@ -241,7 +294,7 @@ img.landing-pic {
     width: 100%;
     object-fit: cover;
     /* bottom: 0; */
-    object-fit:contain;
+    object-fit: contain;
     bottom: 0;
 }
 

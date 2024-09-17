@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Link, Route, useParams } from "react-router-dom";
+import { NavLink, Link, Route, useParams, useHistory } from "react-router-dom";
 import { getOnePlaylist, deleteSonginPlaylist, editOnePlaylist } from '../../store/playlist'
 import PlaylistsPlay from "./playlistPlay";
 import '../../css-package/playlist.css'
 
 function PlaylistsDetails({ playing, setPlaying, setSongName, setArtistName }) {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { playlistId } = useParams();
     const theList = useSelector(state => state.playlist);
     const sessionUser = useSelector(state => state.session.user);
@@ -75,6 +76,11 @@ function PlaylistsDetails({ playing, setPlaying, setSongName, setArtistName }) {
             setSongSelect(song.id)
             setPlayed(true);
         }
+    }
+
+    if (!sessionUser) {
+        history.push('/');
+        // window.alert('You are now logged out')
     }
 
     return listLoaded && (
